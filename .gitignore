@@ -1,0 +1,19 @@
+# Scratch directory created inside the container (owned by root)
+sungwoo/
+
+# Official UNIST guide — copyrighted center material, not ours to redistribute
+*.pdf
+
+# Personal working notes (Korean). Contains local account paths and a
+# Windows username; the English README supersedes it for public use.
+Hawk_컨테이너_SSH접속_정리.md
+
+# SLURM job output. Contains internal node IPs and is per-run noise.
+*_log.txt
+*_err.txt
+
+# SSH keys, just in case
+id_rsa
+id_rsa.pub
+*.pem
+authorized_keys
