@@ -6,6 +6,22 @@ Get a Docker container running on an A100 GPU node, then attach **VS Code** to i
 >
 > **What this is:** a working set of scripts plus the reasoning behind them. Everything here was verified on the Hawk cluster. Where the official manual turned out to be wrong or incomplete, that is called out explicitly.
 
+### Verifying these notes
+
+Do not take this README on faith — it is community notes, and the cluster changes.
+
+1. **Against the official guide.** `UNIST Hawk HPC user guide - ver03.pdf` is included in this repo for reference, and page numbers are cited throughout so you can check each claim. It is the Supercomputing Center's document, not ours; treat the copy the center gives you as authoritative, since versions move on.
+2. **Against the live cluster — stronger.** Every factual claim here came from a command you can re-run yourself:
+
+   ```bash
+   scontrol show node hawk03                                    # GPUs actually in use
+   sacctmgr show assoc user=$USER format=GrpTRESMins,MaxWall,QOS  # your real limits
+   sinfo -p a100_40g -N -l                                      # which nodes are alive
+   nvidia-docker inspect --format='{{json .Config.Cmd}}' <image>  # what the image really runs
+   ```
+
+   If a number here disagrees with your terminal, **your terminal is right.** Please open an issue.
+
 ---
 
 ## Table of contents
@@ -512,3 +528,5 @@ Still unverified:
 ## Disclaimer
 
 Community notes, not an official UNIST Supercomputing Center document. Cluster configuration changes; verify against the current official guide and re-measure before relying on any number here.
+
+`UNIST Hawk HPC user guide - ver03.pdf` is included so you can check these notes against the source. Copyright remains with the UNIST Supercomputing Center; it is reproduced here for reference by UNIST users, and the center's own distribution is authoritative. If the center would rather it not be mirrored here, open an issue and it will be removed.
